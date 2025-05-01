@@ -22,7 +22,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="flex items-center justify-between p-4 bg-gray-800 text-white">
+          <h1 className="text-2xl font-bold">Let's start Next js</h1>
+        </header>
         {children}
+        <footer className="flex items-center justify-center p-4 bg-gray-800 text-white">
+          <p className="text-sm">© 2023 Next.js App</p>
+        </footer>
       </body>
     </html>
   );
