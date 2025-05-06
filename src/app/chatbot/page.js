@@ -14,9 +14,9 @@ export default function TextGenerator() {
     if (!prompt.trim()) return;
 
     setLoading(true);
-    setError('');
-    setGeneratedText('');
-    generatedTextRef.current = '';
+    setError("");
+    setGeneratedText("");
+    generatedTextRef.current = "";
 
     try {
       // Check for special commands first
@@ -42,10 +42,10 @@ export default function TextGenerator() {
         return;
       }
 
-      const response = await fetch('/api/chat', {
-        method: 'POST',
+      const response = await fetch("/api/chat", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           prompt: `
@@ -56,8 +56,7 @@ Please generate a thorough, well-structured response:
 - Emphasize key terms by bolding them with **double asterisks**.
 - Use numbered lists for processes and bulleted lists otherwise.
 - Maintain a formal, professional tone; be concise and clear.
-`
-
+`,
         }),
       });
 
@@ -108,7 +107,10 @@ Please generate a thorough, well-structured response:
         <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
             <div>
-              <label htmlFor="prompt" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="prompt"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Your Prompt
               </label>
               <textarea
@@ -127,7 +129,9 @@ Please generate a thorough, well-structured response:
                 type="submit"
                 disabled={loading}
                 className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${
-                  loading ? "bg-indigo-400" : "bg-indigo-600 hover:bg-indigo-700"
+                  loading
+                    ? "bg-indigo-400"
+                    : "bg-indigo-600 hover:bg-indigo-700"
                 } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200`}
               >
                 {loading ? (
@@ -138,7 +142,14 @@ Please generate a thorough, well-structured response:
                       fill="none"
                       viewBox="0 0 24 24"
                     >
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
                       <path
                         className="opacity-75"
                         fill="currentColor"
@@ -158,7 +169,11 @@ Please generate a thorough, well-structured response:
             <div className="bg-red-50 border-l-4 border-red-400 p-4 mx-6 mb-6 rounded">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg
+                    className="h-5 w-5 text-red-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
                     <path
                       fillRule="evenodd"
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
@@ -175,7 +190,9 @@ Please generate a thorough, well-structured response:
 
           {(generatedText || loading) && (
             <div className="border-t border-gray-200 px-6 py-5">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">Generated Text</h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-4">
+                Generated Text
+              </h2>
               <div className="prose prose-indigo max-w-none min-h-32">
                 <div
                   className="whitespace-pre-wrap text-gray-800 [&_.heading]:text-2xl [&_.heading]:font-bold [&_.heading]:text-indigo-600 [&_.heading]:mb-4 [&_.subheading]:text-xl [&_.subheading]:font-semibold [&_.subheading]:text-indigo-500 [&_.subheading]:mt-4 [&_.subheading]:mb-2"
@@ -190,7 +207,9 @@ Please generate a thorough, well-structured response:
                 <div className="mt-4 flex justify-end space-x-2">
                   <button
                     onClick={() =>
-                      navigator.clipboard.writeText(generatedText.replace(/<\/?[^>]+(>|$)/g, ""))
+                      navigator.clipboard.writeText(
+                        generatedText.replace(/<\/?[^>]+(>|$)/g, "")
+                      )
                     }
                     className="inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
